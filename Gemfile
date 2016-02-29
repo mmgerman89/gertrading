@@ -49,6 +49,10 @@ group :production do
   gem 'pg'
 end
 
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+
 # Devise
 gem 'devise', '3.5.4'
 
