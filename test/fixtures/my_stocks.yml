@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  symbol: MyString
+  purchase_date: 2016-02-29
+  purchase_price: 9.99
+  purchase_commission: 9.99
+  purchase_market_right: 9.99
+  purchase_iva: 9.99
+  sale_date: 2016-02-29
+  sale_price: 9.99
+  sale_commission_decimal: MyString
+  sale_market_right: 9.99
+  sale_iva: MyString
+
+two:
+  symbol: MyString
+  purchase_date: 2016-02-29
+  purchase_price: 9.99
+  purchase_commission: 9.99
+  purchase_market_right: 9.99
+  purchase_iva: 9.99
+  sale_date: 2016-02-29
+  sale_price: 9.99
+  sale_commission_decimal: MyString
+  sale_market_right: 9.99
+  sale_iva: MyString

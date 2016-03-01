@@ -1,0 +1,27 @@
+<div class="panel panel-dafault">
+	<div class="panel-heading">Mis acciones y bonos</div>
+	<td><%= link_to 'Nueva', new_my_stock_path %></td>
+	<table class="table">
+		<thead>
+			<th>Símbolo</th>
+			<th>Fecha Compra</th>
+			<th>Total Compra</th>
+			<th>Fecha Venta</th>
+			<th>Total Venta</th>
+			<th>Resultado</th>
+		</thead>
+		<tbody>
+			<% @my_stocks.each do |my_stock| %>
+				<tr>
+					<th><%= my_stock.symbol %></th>
+					<td><%= my_stock.purchase_date %></td>
+					<td><%= number_to_currency(my_stock.total_purchase) %></td>
+					<td><%= my_stock.sale_date %></td>
+					<td><%= number_to_currency(my_stock.total_sale) %></td>
+					<td style="color: <%= (my_stock.result >= 0)? "green" : "red" %>"><%= number_to_currency(my_stock.result) %></td>
+					<td><%= link_to 'Editar', edit_my_stock_path(my_stock) %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

@@ -1,0 +1,75 @@
+<%= form_for(@stock) do |f| %>
+	<% if @stock.errors.any? %>
+		<div id="error_explanation">
+			<h4><%= pluralize(@stock.errors.count, "error") %> prohibited this stock from being saved:</h4>
+			
+			<% @stock.errors.full_messages.each do |message| %>
+				<div class="alert alert-danger" role="alert">
+					<p><%= message %></p>
+				</div>
+			<% end %>
+		</div>
+	<% end %>
+		<div class="input-group">
+			<%= f.label 'Símbolo' %>
+			<%= f.text_field :symbol, class: "form-control", placeholder: "Símbolo" %>
+		</div>
+		
+		<div class="input-group">
+			<%= f.label 'Cantidad' %>
+			<%= f.text_field :quantity, class: "form-control", placeholder: "Cantidad" %>
+		</div>
+		
+		<div class="input-group">
+			<%= f.label 'Fecha Compra' %>
+			<%= f.date_field :purchase_date, class: "form-control", placeholder: "Fecha de Compra" %>
+		</div>
+		
+		<div class="input-group">
+			<%= f.label 'Precio Compra' %>
+			<%= f.text_field :purchase_price, class: "form-control", placeholder: "Precio de Compra" %>
+		</div>
+		
+		<div class="input-group">
+			<%= f.label 'Comisión Compra' %>
+			<%= f.text_field :purchase_commission, class: "form-control", placeholder: "Comisión de Compra" %>
+		</div>
+		
+		<div class="input-group">
+			<%= f.label 'Dº Mercado Compra' %>
+			<%= f.text_field :purchase_market_right, class: "form-control", placeholder: "Dº Mercado de Compra" %>
+		</div>
+		
+		<div class="input-group">
+			<%= f.label 'IVA Compra' %>
+			<%= f.text_field :purchase_iva, class: "form-control", placeholder: "IVA de Compra" %>
+		</div>
+		
+		<div class="input-group">
+			<%= f.label 'Fecha de Venta' %>
+			<%= f.date_field :sale_date, class: "form-control", placeholder: "Fecha de Venta" %>
+		</div>
+		
+		<div class="input-group">
+			<%= f.label 'Precio de Venta' %>
+			<%= f.text_field :sale_price, class: "form-control", placeholder: "Precio de Venta" %>
+		</div>
+		
+		<div class="input-group">
+			<%= f.label 'Comisión de Venta' %>
+			<%= f.text_field :sale_commission, class: "form-control", placeholder: "Comisión de Venta" %>
+		</div>
+		
+		<div class="input-group">
+			<%= f.label 'Dº Mercado de Venta' %>
+			<%= f.text_field :sale_market_right, class: "form-control", placeholder: "Dº Mercado de Venta" %>
+		</div>
+		
+		<div class="input-group">
+			<%= f.label 'IVA de Venta' %>
+			<%= f.text_field :sale_iva, class: "form-control", placeholder: "IVA de Venta" %>
+		</div>
+		<div class="actions">
+			<%= f.submit 'Guardar', class: "btn btn-default"%>
+		</div>
+<% end %>
