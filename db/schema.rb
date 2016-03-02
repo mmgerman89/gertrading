@@ -11,24 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160301032142) do
+ActiveRecord::Schema.define(version: 20160302025718) do
 
   create_table "my_stocks", force: :cascade do |t|
     t.string   "symbol"
     t.date     "purchase_date"
-    t.decimal  "purchase_price",        precision: 12, scale: 2
-    t.decimal  "purchase_commission",   precision: 12, scale: 2
-    t.decimal  "purchase_market_right", precision: 12, scale: 2
-    t.decimal  "purchase_iva",          precision: 12, scale: 2
+    t.decimal  "purchase_price",            precision: 12, scale: 2, default: 0.0
+    t.decimal  "purchase_commission",       precision: 12, scale: 2, default: 0.0
+    t.decimal  "purchase_market_right",     precision: 12, scale: 2, default: 0.0
     t.date     "sale_date"
-    t.decimal  "sale_price",            precision: 12, scale: 2
-    t.decimal  "sale_market_right",     precision: 12, scale: 2
+    t.decimal  "sale_price",                precision: 12, scale: 2, default: 0.0
+    t.decimal  "sale_market_right",         precision: 12, scale: 2, default: 0.0
     t.integer  "user_id"
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
-    t.decimal  "sale_commission",       precision: 12, scale: 2
-    t.integer  "quantity"
-    t.decimal  "sale_iva",              precision: 12, scale: 2
+    t.datetime "created_at",                                                       null: false
+    t.datetime "updated_at",                                                       null: false
+    t.decimal  "sale_commission",           precision: 12, scale: 2, default: 0.0
+    t.decimal  "quantity",                  precision: 12, scale: 2, default: 0.0
+    t.decimal  "purchase_market_right_iva", precision: 12, scale: 2, default: 0.0
+    t.decimal  "sale_market_right_iva",     precision: 12, scale: 2, default: 0.0
+    t.decimal  "purchase_commission_iva",   precision: 12, scale: 2, default: 0.0
+    t.decimal  "sale_commission_iva",       precision: 12, scale: 2, default: 0.0
   end
 
   create_table "users", force: :cascade do |t|

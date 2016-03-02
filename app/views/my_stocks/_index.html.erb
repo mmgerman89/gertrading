@@ -9,6 +9,9 @@
 			<th>Fecha Venta</th>
 			<th>Total Venta</th>
 			<th>Resultado</th>
+			<th>Var. %</th>
+			<th>Días</th>
+			<th>Anual</th>
 		</thead>
 		<tbody>
 			<% @my_stocks.each do |my_stock| %>
@@ -19,6 +22,9 @@
 					<td><%= my_stock.sale_date %></td>
 					<td><%= number_to_currency(my_stock.total_sale) %></td>
 					<td style="color: <%= (my_stock.result >= 0)? "green" : "red" %>"><%= number_to_currency(my_stock.result) %></td>
+					<td style="color: <%= (my_stock.result >= 0)? "green" : "red" %>"><%= my_stock.var %></td>
+					<td><%= my_stock.days %></td>
+					<td style="color: <%= (my_stock.result >= 0)? "green" : "red" %>"><%= my_stock.var_anual %></td>
 					<td><%= link_to 'Editar', edit_my_stock_path(my_stock) %></td>
 				</tr>
 			<% end %>
