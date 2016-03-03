@@ -43,7 +43,7 @@ class MyStocksController < ApplicationController
   def stock_params
     params.require(:my_stock).permit(:symbol, :quantity, :purchase_date, :purchase_price, :purchase_commission,
       :purchase_market_right, :purchase_commission_iva, :purchase_market_right_iva, :sale_date, :sale_price, 
-      :sale_commission, :sale_market_right, :sale_commission_iva, :sale_market_right_iva, :user_id, )
+      :sale_commission, :sale_market_right, :sale_commission_iva, :sale_market_right_iva, :user_id, :type_stock )
   end
   
 end

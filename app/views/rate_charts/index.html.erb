@@ -1,0 +1,6 @@
+<% if current_user.rate_charts.count > 0 %>
+	<p>Aquí verá sus cuadros tarifarios cargados</p>
+<% else %>
+	<p>No registra cuadros tarifarios cargados</p>
+	<%= link_to 'Agregar Cuadro Tarifario', new_rate_chart_path, class: "btn btn-default" %>
+<% end %>

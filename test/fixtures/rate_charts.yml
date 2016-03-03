@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 1
+  since: 2016-03-02
+  until: 2016-03-02
+  commission: 9.99
+  commission_iva: 9.99
+  market_right: 9.99
+  market_right_iva: 9.99
+
+two:
+  type: 1
+  since: 2016-03-02
+  until: 2016-03-02
+  commission: 9.99
+  commission_iva: 9.99
+  market_right: 9.99
+  market_right_iva: 9.99

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160302025718) do
+ActiveRecord::Schema.define(version: 20160303034047) do
 
   create_table "my_stocks", force: :cascade do |t|
     t.string   "symbol"
@@ -31,6 +31,20 @@ ActiveRecord::Schema.define(version: 20160302025718) do
     t.decimal  "sale_market_right_iva",     precision: 12, scale: 2, default: 0.0
     t.decimal  "purchase_commission_iva",   precision: 12, scale: 2, default: 0.0
     t.decimal  "sale_commission_iva",       precision: 12, scale: 2, default: 0.0
+    t.integer  "type_stock"
+  end
+
+  create_table "rate_charts", force: :cascade do |t|
+    t.integer  "type"
+    t.date     "since"
+    t.date     "until"
+    t.decimal  "commission",       precision: 12, scale: 2
+    t.decimal  "commission_iva",   precision: 12, scale: 2
+    t.decimal  "market_right",     precision: 12, scale: 2
+    t.decimal  "market_right_iva", precision: 12, scale: 2
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.integer  "user_id"
   end
 
   create_table "users", force: :cascade do |t|

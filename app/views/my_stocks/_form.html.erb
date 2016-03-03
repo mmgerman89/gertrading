@@ -26,6 +26,14 @@
 					</td>
 					<td>
 						<div class="input-group">
+							<%= f.label 'Tipo' %>
+							<%= f.select(:type_stock, options_for_select([["Acción", 1],["Bono", 2]], @stock.type_stock), {}, {class: "form-control"}) %>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div class="input-group">
 							<%= f.label 'Cantidad' %>
 							<%= f.text_field :quantity, class: "form-control", placeholder: "Cantidad" %>
 						</div>

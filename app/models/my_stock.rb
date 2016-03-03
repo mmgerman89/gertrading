@@ -5,6 +5,7 @@ class MyStock < ActiveRecord::Base
 
   validates :user, presence: true
   validates :symbol, presence: true
+  validates :type_stock, presence: true
   validates :quantity, presence: true, numericality: { greater_than: 0 }
   validates :purchase_price, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :purchase_commission, presence: true, numericality: { greater_than_or_equal_to: 0 }
