@@ -1,6 +1,31 @@
-<% if current_user.rate_charts.count > 0 %>
-	<p>Aquí verá sus cuadros tarifarios cargados</p>
-<% else %>
-	<p>No registra cuadros tarifarios cargados</p>
-	<%= link_to 'Agregar Cuadro Tarifario', new_rate_chart_path, class: "btn btn-default" %>
-<% end %>
+<div class="panel panel-dafault">
+	<div class="panel-heading">Mis acciones y bonos</div>
+	<div align="right"><td><%= link_to 'Nuevo Cuadro', new_rate_chart_path, class: "btn btn-default" %></td></div>
+	<table class="table">
+		<thead>
+			<th>Tipo</th>
+			<th>Desde</th>
+			<th>Hasta</th>
+			<th>Comisión (%)</th>
+			<th>Com. Mín.</th>
+			<th>IVA Com. (%)</th>
+			<th>Dº Mercado (%)</th>
+			<th>IVA Dº Merc. (%)</th>
+		</thead>
+		<tbody>
+			<% @rate_charts.each do |rate_chart| %>
+				<tr>
+					<th><%= rate_chart.type_stock_description %></th>
+					<td><%= rate_chart.since %></td>
+					<td><%= rate_chart.until %></td>
+					<td><%= rate_chart.commission %></td>
+					<td><%= number_to_currency(rate_chart.commission_min) %></td>
+					<td><%= rate_chart.commission_iva %></td>
+					<td><%= rate_chart.market_right %></td>
+					<td><%= rate_chart.market_right_iva %></td>
+					<td><%= link_to 'Editar', edit_rate_chart_path(rate_chart) %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

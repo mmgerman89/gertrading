@@ -35,8 +35,8 @@ class MyStocksController < ApplicationController
   def owner
     @stock = MyStock.find(params[:id])
     if @stock.user != current_user
-      flash[:notice] = "No puedes hacer esto!"
-      redirect_to root
+      flash[:error] = "No podes hacer eso!"
+      redirect_to root_path
     end
   end
   

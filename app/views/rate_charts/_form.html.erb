@@ -1,0 +1,83 @@
+<%= form_for(@rate_chart) do |f| %>
+	<% if @rate_chart.errors.any? %>
+		<div id="error_explanation">
+			<h4><%= pluralize(@rate_chart.errors.count, "error") %> prohibited this rate chart from being saved:</h4>
+			
+			<% @rate_chart.errors.full_messages.each do |message| %>
+				<div class="alert alert-danger" role="alert">
+					<p><%= message %></p>
+				</div>
+			<% end %>
+		</div>
+	<% end %>
+		
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Cuadro Tarifario</h3>
+		</div>
+		<div class="panel-body">
+			<table class="table">
+				<tr>
+					<td>
+						<div class="input-group">
+							<%= f.label 'Tipo' %>
+							<%= f.select(:type_stock, options_for_select([["Acción", 1],["Bono", 2]], @rate_chart.type_stock), {}, {class: "form-control"}) %>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="input-group">
+							<%= f.label 'Desde' %>
+							<%= f.date_field :since, class: "form-control", placeholder: "Desde" %>
+						</div>
+					</td>
+					<td>
+						<div class="input-group">
+							<%= f.label 'Hasta' %>
+							<%= f.date_field :until, class: "form-control", placeholder: "Hasta" %>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="input-group">
+							<%= f.label 'Comisión' %>
+							<%= f.text_field :commission, class: "form-control", placeholder: "Comisión" %>
+						</div>
+					</td>
+					<td>
+						<div class="input-group">
+							<%= f.label 'Comisión mínima' %>
+							<%= f.text_field :commission_min, class: "form-control", placeholder: "Comisión mínima" %>
+						</div>
+					</td>
+					<td>
+						<div class="input-group">
+							<%= f.label 'IVA Comisión' %>
+							<%= f.text_field :commission_iva, class: "form-control", placeholder: "IVA Comisión" %>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div class="input-group">
+							<%= f.label 'Dº Mercado' %>
+							<%= f.text_field :market_right, class: "form-control", placeholder: "Dº Mercado" %>
+						</div>
+					</td>
+					<td>
+						<div class="input-group">
+							<%= f.label 'IVA Dº Mercado' %>
+							<%= f.text_field :market_right_iva, class: "form-control", placeholder: "IVA Dº Mercado" %>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+		
+	<div class="actions">
+		<%= f.submit 'Guardar', class: "btn btn-default"%>
+	</div>
+<% end %>
