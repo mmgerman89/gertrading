@@ -48,50 +48,78 @@
 			<h3 class="panel-title">Compra</h3>
 		</div>
 		<div class="panel-body">
-			<table class="table">
-				<tr>
-					<td>
-						<div class="input-group">
-							<%= f.label 'Fecha de Compra' %>
-							<%= f.date_field :purchase_date, class: "form-control", placeholder: "Fecha de Compra" %>
-						</div>
-					</td>
-					<td>
-						<div class="input-group">
-							<%= f.label 'Precio de Compra' %>
-							<%= f.text_field :purchase_price, class: "form-control", placeholder: "Precio de Compra" %>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<div class="input-group">
-							<%= f.label 'Comisión de Compra' %>
-							<%= f.text_field :purchase_commission, class: "form-control", placeholder: "Comisión de Compra" %>
-						</div>
-					</td>
-					<td>
-						<div class="input-group">
-							<%= f.label 'IVA Comisión de Compra' %>
-							<%= f.text_field :purchase_commission_iva, class: "form-control", placeholder: "IVA Comisión de Compra" %>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<div class="input-group">
-							<%= f.label 'Dº Mercado de Compra' %>
-							<%= f.text_field :purchase_market_right, class: "form-control", placeholder: "Dº Mercado de Compra" %>
-						</div>
-					</td>
-					<td>
-						<div class="input-group">
-							<%= f.label 'IVA Dº Mercado de Compra' %>
-							<%= f.text_field :purchase_market_right_iva, class: "form-control", placeholder: "IVA Dº Mercado de Compra" %>
-						</div>
-					</td>
-				</tr>
-			</table>
+			<div class="row">
+				<div class="col-lg-8">
+					<table class="table">
+						<tr>
+							<td>
+								<div class="input-group">
+									<%= f.label 'Fecha de Compra' %>
+									<%= f.date_field :purchase_date, class: "form-control", placeholder: "Fecha de Compra" %>
+								</div>
+							</td>
+							<td>
+								<div class="input-group">
+									<%= f.label 'Precio de Compra' %>
+									<%= f.text_field :purchase_price, class: "form-control", placeholder: "Precio de Compra" %>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="input-group">
+									<%= f.label 'Comisión de Compra' %>
+									<%= f.text_field :purchase_commission, class: "form-control", placeholder: "Comisión de Compra" %>
+								</div>
+							</td>
+							<td>
+								<div class="input-group">
+									<%= f.label 'IVA Comisión de Compra' %>
+									<%= f.text_field :purchase_commission_iva, class: "form-control", placeholder: "IVA Comisión de Compra" %>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="input-group">
+									<%= f.label 'Dº Mercado de Compra' %>
+									<%= f.text_field :purchase_market_right, class: "form-control", placeholder: "Dº Mercado de Compra" %>
+								</div>
+							</td>
+							<td>
+								<div class="input-group">
+									<%= f.label 'IVA Dº Mercado de Compra' %>
+									<%= f.text_field :purchase_market_right_iva, class: "form-control", placeholder: "IVA Dº Mercado de Compra" %>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="input-group">
+									<%= f.label 'Subtotal' %>
+									<%= f.text_field :subtotal_purchase, class: "form-control", readonly: true %>
+								</div>
+							</td>
+							<td>
+								<div class="input-group">
+									<%= f.label 'Impuestos' %>
+									<%= f.text_field :tax_purchase, class: "form-control", readonly: true %>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" align="center">
+								<div class="input-group">
+									<%= f.label 'Total' %>
+									<%= f.text_field :total_purchase, class: "form-control", readonly: true %>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				
+				<%= render 'actual_rate_chart' %>
+			</div>
 		</div>
 	</div>
 	
