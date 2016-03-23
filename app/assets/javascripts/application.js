@@ -17,9 +17,23 @@
 //= require_tree .
 
 $(document).ready(function() { 
+	function getCurrentRateChart() {
+		
+	}
+	
+	$("#my_stock_purchase_date").blur(function(){
+		$.ajax({
+			type: "GET",
+			url: "/rate_charts_current",
+			data: {type: $("#my_stock_type_stock").val(),date: $(this).val()},
+			callback: null
+		});
+		return false;
+	});
+	
 	function getTotalPurchase() {
 		var subtotal = 0;
-		
+
 		qty = parseInt($("#my_stock_quantity").val());
 		price = parseFloat($("#my_stock_purchase_price").val());
 		

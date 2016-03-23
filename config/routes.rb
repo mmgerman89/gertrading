@@ -1,16 +1,4 @@
 Rails.application.routes.draw do
-  
-  get 'rate_charts/index'
-
-  get 'rate_charts/show'
-
-  get 'rate_charts/edit'
-
-  get 'rate_charts/update'
-
-  get 'rate_charts/new'
-
-  get 'rate_charts/create'
 
   root 'home#index'
   
@@ -20,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :my_stocks
   resources :rate_charts
+  get 'rate_charts_current' => 'rate_charts#current'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,9 +1,10 @@
 class RateChartsController < ApplicationController
   before_filter :get_rate_chart, only: [:edit, :destroy]
   before_filter :correct_user!, only: [:edit, :update, :destroy]
+  before_action :get_rate_charts_user, only: [:index, :current]
   
   def index
-    @rate_charts = current_user.rate_charts
+    
   end
 
   def show
@@ -37,6 +38,17 @@ class RateChartsController < ApplicationController
     end
   end
   
+  def current
+    puts "$$ def current $$"
+    
+    date = params[:date]
+    date = DateTime.parse(date)
+    type = params[:type]
+    type = type.to_i
+    @current_rate_chart = @rate_charts.detect{ |rc| rc.since <= date && date <= rc.until && rc.type_stock = type }
+    puts "%% Desde: #{@current_rate_chart.since} -- Hasta: #{@current_rate_chart.until} -- Tipo: #{@current_rate_chart.type_stock} %%"
+  end
+  
   protected
   
   def get_rate_chart
@@ -54,5 +66,9 @@ class RateChartsController < ApplicationController
   def rate_chart_params
     params.require(:rate_chart).permit(:since, :until, :commission, :commission_iva, 
         :commission_min, :market_right, :market_right_iva, :user_id, :type_stock)
+  end
+  
+  def get_rate_charts_user
+    @rate_charts = current_user.rate_charts
   end
 end
