@@ -1,3 +1,18 @@
-console.log("Entro a current.js.erb")
-
-$("#purchase_actual_rate_chart_commission").text("<%= @current_rate_chart.commission %>");
+<% if @current_rate_chart %>
+	<% commission 			= @current_rate_chart.commission %>
+	<% commission_min 		= @current_rate_chart.commission_min %>
+	<% commission_iva 		= @current_rate_chart.commission_iva %>
+	<% market_right 		= @current_rate_chart.market_right %>
+	<% market_right_iva 	= @current_rate_chart.market_right_iva %>
+<% else %>
+	<% commission 			= 0 %>
+	<% commission_min 		= 0 %>
+	<% commission_iva 		= 0 %>
+	<% market_right 		= 0 %>
+	<% market_right_iva 	= 0 %>
+<% end %>
+$("#purchase_current_rate_chart_commission").text("<%= commission %>");
+$("#purchase_current_rate_chart_commission_min").text("<%= commission_min %>");
+$("#purchase_current_rate_chart_commission_iva").text("<%= commission_iva %>");
+$("#purchase_current_rate_chart_market_right").text("<%= market_right %>");
+$("#purchase_current_rate_chart_market_right_iva").text("<%= market_right_iva %>");

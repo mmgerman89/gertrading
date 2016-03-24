@@ -1,0 +1,56 @@
+<div class="col-lg-4">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Cuadro Tarifario Vigente</h3>
+		</div>
+		<div class="panel-body">
+			<table class="table">
+				<tr>
+					<td>
+						<p>Comisión</p>
+					</td>
+					<td align="right">
+						<p><%= label_tag 'commission', '', id: 'purchase_current_rate_chart_commission' %> %</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>Mínimo</p>
+					</td>
+					<td align="right">
+						<p>$ <%= label_tag 'minimium commission', '', id: 'purchase_current_rate_chart_commission_min' %></p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>IVA comisión</p>
+					</td>
+					<td align="right">
+						<p><%= label_tag 'iva commission', '', id: 'purchase_current_rate_chart_commission_iva' %> %</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>Dº Mercado</p>
+					</td>
+					<td align="right">
+						<p><%= label_tag 'iva commission', '', id: 'purchase_current_rate_chart_market_right' %> %</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>IVA Dº Mercado</p>
+					</td>
+					<td align="right">
+						<p><%= label_tag 'iva commission', '', id: 'purchase_current_rate_chart_market_right_iva' %> %</p>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<%= link_to 'Calcular', '#', remote: true, class: 'btn btn-default', id: 'calculate_pruchase' %>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>

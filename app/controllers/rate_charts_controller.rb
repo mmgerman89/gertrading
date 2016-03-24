@@ -39,14 +39,10 @@ class RateChartsController < ApplicationController
   end
   
   def current
-    puts "$$ def current $$"
-    
-    date = params[:date]
-    date = DateTime.parse(date)
-    type = params[:type]
-    type = type.to_i
-    @current_rate_chart = @rate_charts.detect{ |rc| rc.since <= date && date <= rc.until && rc.type_stock = type }
-    puts "%% Desde: #{@current_rate_chart.since} -- Hasta: #{@current_rate_chart.until} -- Tipo: #{@current_rate_chart.type_stock} %%"
+    @current_rate_chart = nil
+    date = DateTime.parse(params[:date])
+    type = params[:type].to_i
+    @current_rate_chart = @rate_charts.detect{ |rc| rc.since <= date && date <= rc.until && rc.type_stock == type }
   end
   
   protected
