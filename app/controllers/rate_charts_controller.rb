@@ -42,7 +42,12 @@ class RateChartsController < ApplicationController
     @current_rate_chart = nil
     date = DateTime.parse(params[:date])
     type = params[:type].to_i
-    @current_rate_chart = @rate_charts.detect{ |rc| rc.since <= date && date <= rc.until && rc.type_stock == type }
+    @current_rate_chart = @rate_charts.detect do |rc| 
+      rc.since <= date && (rc.until != nil) ? date <= rc.until : false && rc.type_stock == type
+    end
+    if @current_rate_chart == nil
+      @current_rate_chart = @rate_charts.detect{ |rc| rc.until == nil && rc.type_stock == type }
+    end
   end
   
   protected
