@@ -1,6 +1,6 @@
 
-var do_on_load = function(){
-	console.log("purchase_calculation.js");
+function ready() {
+	console.log("my_stock.js");
 
 	getCurrentRateChart($("#my_stock_purchase_date"));
 
@@ -29,10 +29,11 @@ var do_on_load = function(){
 		$("#my_stock_purchase_commission").val(purchase_commission);
 		$("#my_stock_purchase_commission_iva").val(purchase_commission_iva);
 		$("#my_stock_purchase_market_right").val(purchase_market_right);
-		$("#my_stock_purchase_market_right_iva").val(purchase_market_right_iva);
+		$("#my_stock_purchase_market_right_iva").val(purchase_market_right_iva);		
+		
 	};
-
-
+	
+	
 	function getCurrentRateChart(element) {
 		$.ajax({
 			type: "GET",
@@ -64,6 +65,12 @@ var do_on_load = function(){
 		$("#my_stock_tax_purchase").val(taxes);
 		$("#my_stock_total_purchase").val(total);
 	};
+
+	function executeCalculations() {
+		getCurrentRateChart($("#my_stock_purchase_date"));
+		setValuesFromRateChart();
+		getTotalPurchase();
+	};
 	
 	$("#my_stock_purchase_price").blur(function(){
 		getTotalPurchase();
@@ -91,9 +98,7 @@ var do_on_load = function(){
 	
 	
 	$("#calculate_pruchase").click(function () {
-		getCurrentRateChart($("#my_stock_purchase_date"));
-		setValuesFromRateChart();
-		getTotalPurchase();
+		executeCalculations()
 	});
 	
 	$("#my_stock_purchase_date").blur(function(){
@@ -101,5 +106,5 @@ var do_on_load = function(){
 	});
 };
 
-$(document).ready(do_on_load);
-$(window).bind('page:load', do_on_load);
+$(document).ready(ready);
+$(document).on('page:load', ready);
