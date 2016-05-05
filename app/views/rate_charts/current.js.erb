@@ -11,8 +11,18 @@
 	<% market_right 		= 0 %>
 	<% market_right_iva 	= 0 %>
 <% end %>
-$("#purchase_current_rate_chart_commission").text("<%= commission %>");
-$("#purchase_current_rate_chart_commission_min").text("<%= commission_min %>");
-$("#purchase_current_rate_chart_commission_iva").text("<%= commission_iva %>");
-$("#purchase_current_rate_chart_market_right").text("<%= market_right %>");
-$("#purchase_current_rate_chart_market_right_iva").text("<%= market_right_iva %>");
+<% if @operation == "purchase" %> 
+	<%= puts @operation %>
+	$("#purchase_current_rate_chart_commission").text("<%= commission %>");
+	$("#purchase_current_rate_chart_commission_min").text("<%= commission_min %>");
+	$("#purchase_current_rate_chart_commission_iva").text("<%= commission_iva %>");
+	$("#purchase_current_rate_chart_market_right").text("<%= market_right %>");
+	$("#purchase_current_rate_chart_market_right_iva").text("<%= market_right_iva %>");
+<% else %>
+	<%= puts @operation %>
+	$("#sale_current_rate_chart_commission").text("<%= commission %>");
+	$("#sale_current_rate_chart_commission_min").text("<%= commission_min %>");
+	$("#sale_current_rate_chart_commission_iva").text("<%= commission_iva %>");
+	$("#sale_current_rate_chart_market_right").text("<%= market_right %>");
+	$("#sale_current_rate_chart_market_right_iva").text("<%= market_right_iva %>");
+<% end %>

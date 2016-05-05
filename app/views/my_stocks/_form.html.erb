@@ -118,7 +118,7 @@
 					</table>
 				</div>
 				
-				<%= render 'current_rate_chart' %>
+				<%= render 'current_purchase_rate_chart' %>
 			</div>
 		</div>
 	</div>
@@ -129,50 +129,77 @@
 			<h3 class="panel-title">Venta</h3>
 		</div>
 		<div class="panel-body">
-			<table class="table">
-				<tr>
-					<td>
-						<div class="input-group">
-							<%= f.label 'Precio de Venta' %>
-							<%= f.text_field :sale_price, class: "form-control", placeholder: "Precio de Venta" %>
-						</div>
-					</td>
-					<td>
-						<div class="input-group">
-							<%= f.label 'Fecha de Venta' %>
-							<%= f.date_field :sale_date, class: "form-control", placeholder: "Fecha de Venta" %>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<div class="input-group">
-							<%= f.label 'Comisión de Venta' %>
-							<%= f.text_field :sale_commission, class: "form-control", placeholder: "Comisión de Venta" %>
-						</div>
-					</td>
-					<td>
-						<div class="input-group">
-							<%= f.label 'IVA Comisión de Venta' %>
-							<%= f.text_field :sale_commission_iva, class: "form-control", placeholder: "IVA Comisión de Venta" %>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<div class="input-group">
-							<%= f.label 'Dº Mercado de Venta' %>
-							<%= f.text_field :sale_market_right, class: "form-control", placeholder: "Dº Mercado de Venta" %>
-						</div>
-					</td>
-					<td>
-						<div class="input-group">
-							<%= f.label 'IVA Dº Mercado de Venta' %>
-							<%= f.text_field :sale_market_right_iva, class: "form-control", placeholder: "IVA Dº Mercado de Venta" %>
-						</div>
-					</td>			
-				</tr>
-			</table>						
+			<div class="row">
+				<div class="col-lg-8">
+					<table class="table">
+						<tr>
+							<td>
+								<div class="input-group">
+									<%= f.label 'Fecha de Venta' %>
+									<%= f.date_field :sale_date, class: "form-control", placeholder: "Fecha de Venta" %>
+								</div>
+							</td>
+							<td>
+								<div class="input-group">
+									<%= f.label 'Precio de Venta' %>
+									<%= f.text_field :sale_price, class: "form-control", placeholder: "Precio de Venta" %>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="input-group">
+									<%= f.label 'Comisión de Venta' %>
+									<%= f.text_field :sale_commission, class: "form-control", placeholder: "Comisión de Venta" %>
+								</div>
+							</td>
+							<td>
+								<div class="input-group">
+									<%= f.label 'IVA Comisión de Venta' %>
+									<%= f.text_field :sale_commission_iva, class: "form-control", placeholder: "IVA Comisión de Venta" %>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="input-group">
+									<%= f.label 'Dº Mercado de Venta' %>
+									<%= f.text_field :sale_market_right, class: "form-control", placeholder: "Dº Mercado de Venta" %>
+								</div>
+							</td>
+							<td>
+								<div class="input-group">
+									<%= f.label 'IVA Dº Mercado de Venta' %>
+									<%= f.text_field :sale_market_right_iva, class: "form-control", placeholder: "IVA Dº Mercado de Venta" %>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="input-group">
+									<%= f.label 'Subtotal' %>
+									<%= f.text_field :subtotal_sale, class: "form-control", readonly: true %>
+								</div>
+							</td>
+							<td>
+								<div class="input-group">
+									<%= f.label 'Impuestos' %>
+									<%= f.text_field :tax_sale, class: "form-control", readonly: true %>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" align="center">
+								<div class="input-group">
+									<%= f.label 'Total' %>
+									<%= f.text_field :total_sale, class: "form-control", readonly: true %>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<%= render 'current_sale_rate_chart' %>
+			</div>
 		</div>
 	</div>
 		

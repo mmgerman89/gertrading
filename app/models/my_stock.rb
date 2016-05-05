@@ -19,7 +19,7 @@ class MyStock < ActiveRecord::Base
   validates :sale_market_right_iva, presence: true, numericality: { greater_than_or_equal_to: 0 }
   
   def subtotal_purchase
-    #subtotal_purchase = quantity * purchase_price
+    
   end
   
   def tax_purchase
@@ -28,6 +28,14 @@ class MyStock < ActiveRecord::Base
   
   def total_purchase
     total_purchase = (purchase_price * quantity) + purchase_commission + purchase_commission_iva + purchase_market_right + purchase_market_right_iva
+  end
+
+  def subtotal_sale
+    
+  end
+  
+  def tax_sale
+    
   end
   
   def total_sale

@@ -42,6 +42,7 @@ class RateChartsController < ApplicationController
     @current_rate_chart = nil
     date = DateTime.parse(params[:date])
     type = params[:type].to_i
+    @operation = params[:operation].to_s
     @current_rate_chart = @rate_charts.detect do |rc| 
       rc.since <= date && (rc.until != nil) ? date <= rc.until : false && rc.type_stock == type
     end
