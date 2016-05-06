@@ -39,7 +39,15 @@ class MyStock < ActiveRecord::Base
   end
   
   def total_sale
-    total_sale = (sale_price * quantity) - (sale_commission + sale_commission_iva + sale_market_right + sale_market_right_iva)
+    puts "$$$ " + symbol + " $$$"
+    if sale_price == 0
+      data = StockQuote::Stock.quote(symbol+".BA")
+      puts "$$$ " + data.last_trade_price_only.to_s + " $$$"
+      current_price = data.last_trade_price_only
+    else
+      current_price = sale_price
+    end
+    total_sale = (current_price * quantity) - (sale_commission + sale_commission_iva + sale_market_right + sale_market_right_iva)
   end
   
   def result
