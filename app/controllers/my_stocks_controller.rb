@@ -1,5 +1,9 @@
 class MyStocksController < ApplicationController
-  before_action :owner, only: [:edit, :update]
+  before_action :owner, only: [:show, :edit, :update]
+
+  def show
+
+  end
   
   def index
     @my_stocks = current_user.my_stocks

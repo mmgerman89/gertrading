@@ -16,7 +16,7 @@
 		<tbody>
 			<% @my_stocks.each do |my_stock| %>
 				<tr>
-					<th><%= my_stock.symbol %></th>
+					<th><%= link_to my_stock.symbol, my_stock_path(my_stock) %></th>
 					<td><%= my_stock.purchase_date %></td>
 					<td><%= number_to_currency(my_stock.total_purchase) %></td>
 					<td><%= my_stock.sale_date %></td>
