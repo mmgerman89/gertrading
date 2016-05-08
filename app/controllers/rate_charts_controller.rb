@@ -37,7 +37,7 @@ class RateChartsController < ApplicationController
       render :new
     end
   end
-  
+
   def current
     @current_rate_chart = nil
     date = DateTime.parse(params[:date])
@@ -49,8 +49,9 @@ class RateChartsController < ApplicationController
     if @current_rate_chart == nil
       @current_rate_chart = @rate_charts.detect{ |rc| rc.until == nil && rc.type_stock == type }
     end
+    @current_rate_chart
   end
-  
+
   protected
   
   def get_rate_chart

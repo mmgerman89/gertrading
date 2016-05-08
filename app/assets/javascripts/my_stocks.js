@@ -90,10 +90,15 @@ function ready() {
 	
 	
 	function getCurrentRateChart(element) {
+		chartDate = $(element).val();
+		if (!Date.parse(chartDate)) {
+			chartDate = new Date();
+		}
+
 		$.ajax({
 			type: "GET",
 			url: "/rate_charts_current",
-			data: {type: $("#my_stock_type_stock").val(),date: $(element).val(), operation: "purchase"},
+			data: {type: $("#my_stock_type_stock").val(),date: chartDate, operation: "purchase"},
 			callback: null
 		});
 		return true;
@@ -196,11 +201,15 @@ function ready() {
 	
 	
 	function getCurrentSaleRateChart(element) {
-		console.log("aloja " + $(element).val());
+		chartDate = $(element).val();
+		if (!Date.parse(chartDate)) {
+			chartDate = new Date();
+		}
+
 		$.ajax({
 			type: "GET",
 			url: "/rate_charts_current",
-			data: {type: $("#my_stock_type_stock").val(),date: $(element).val(), operation: "sale"},
+			data: {type: $("#my_stock_type_stock").val(),date: chartDate, operation: "sale"},
 			callback: null
 		});
 		return true;

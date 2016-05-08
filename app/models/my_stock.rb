@@ -39,15 +39,14 @@ class MyStock < ActiveRecord::Base
   end
   
   def total_sale
-    puts "$$$ " + symbol + " $$$"
-    if sale_price == 0
-      data = StockQuote::Stock.quote(symbol+".BA")
-      puts "$$$ " + data.last_trade_price_only.to_s + " $$$"
+    if sale_price == 0 and symbol
+      data = StockQuote::Stock.quote(symbol + ".BA")
       current_price = data.last_trade_price_only
+      setCurrentSaleValues(self.quantity, current_price)
     else
       current_price = sale_price
     end
-    total_sale = (current_price * quantity) - (sale_commission + sale_commission_iva + sale_market_right + sale_market_right_iva)
+    total_sale = (current_price * self.quantity) - (self.sale_commission + self.sale_commission_iva + self.sale_market_right + self.sale_market_right_iva)
   end
   
   def result
@@ -84,4 +83,18 @@ class MyStock < ActiveRecord::Base
     self.sale_market_right ||= 0.00
     self.sale_market_right_iva ||= 0.00
   end
+
+  def setCurrentSaleValues(quantity, current_price)
+    puts " ---------------------- "
+    rc = RateChart.new
+    current_user = self.user
+    sale_chart = rc.current(current_user, Date.today, self.type_stock, "Sale")
+    amount = (current_price * quantity)
+    self.sale_commission = sale_chart.commission * amount / 100
+    self.sale_commission_iva = sale_chart.commission_iva * self.sale_commission / 100
+    self.sale_market_right = sale_chart.market_right * amount / 100
+    self.sale_market_right_iva = sale_chart.market_right_iva * self.sale_market_right / 100
+    #tot =  amount - (sale_commission + sale_commission_iva + sale_market_right + sale_market_right_iva)
+  end
+
 end
