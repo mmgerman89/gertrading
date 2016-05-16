@@ -1,5 +1,6 @@
+var ready;
 
-function ready() {
+ready = function ready() {
 	console.log("my_stock.js");
 
 	getCurrentRateChart($("#my_stock_purchase_date"));
@@ -65,6 +66,10 @@ function ready() {
 	
 	$("#my_stock_purchase_date").blur(function(){
 		getCurrentRateChart(this);
+	});
+
+	$("#calculate_purchase").click(function () {
+		executeCalculations();
 	});
 
 	function getTotalPurchase() {
@@ -176,6 +181,10 @@ function ready() {
 	
 	$("#my_stock_sale_date").blur(function(){
 		getCurrentSaleRateChart(this);
+	});
+
+	$("#calculate_sale").click(function () {
+		executeSaleCalculations();
 	});
 
 	function getTotalSale() {
