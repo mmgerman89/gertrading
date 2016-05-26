@@ -85,7 +85,6 @@ class MyStock < ActiveRecord::Base
   end
 
   def setCurrentSaleValues(quantity, current_price)
-    puts " ---------------------- "
     rc = RateChart.new
     current_user = self.user
     sale_chart = rc.current(current_user, Date.today, self.type_stock, "Sale")
@@ -94,7 +93,6 @@ class MyStock < ActiveRecord::Base
     self.sale_commission_iva = sale_chart.commission_iva * self.sale_commission / 100
     self.sale_market_right = sale_chart.market_right * amount / 100
     self.sale_market_right_iva = sale_chart.market_right_iva * self.sale_market_right / 100
-    #tot =  amount - (sale_commission + sale_commission_iva + sale_market_right + sale_market_right_iva)
   end
 
 end

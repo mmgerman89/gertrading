@@ -13,7 +13,6 @@ class RateChart < ActiveRecord::Base
   end
 
   def current (user = self.user, dateParam = DateTime.parse(params[:date]), type = params[:type].to_i, operation = params[:operation].to_s)
-    puts "asdasd"
     @current_rate_chart = nil
     if dateParam == nil
       date = Date.today
