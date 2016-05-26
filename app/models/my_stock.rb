@@ -40,13 +40,11 @@ class MyStock < ActiveRecord::Base
   
   def total_sale
     if sale_price == 0 and symbol
-      data = StockQuote::Stock.quote(symbol + ".BA")
-      current_price = data.last_trade_price_only
-      setCurrentSaleValues(self.quantity, current_price)
+      sale_stock_price = self.current_price
     else
-      current_price = sale_price
+      sale_stock_price = sale_price
     end
-    total_sale = (current_price * self.quantity) - (self.sale_commission + self.sale_commission_iva + self.sale_market_right + self.sale_market_right_iva)
+    total_sale = (sale_stock_price * self.quantity) - (self.sale_commission + self.sale_commission_iva + self.sale_market_right + self.sale_market_right_iva)
   end
   
   def result
@@ -68,6 +66,14 @@ class MyStock < ActiveRecord::Base
     var_anual = 365 * var / days
     var_anual.round(2)
   end
+
+  def current_price
+    yahoo_client = YahooFinance::Client.new
+    data = yahoo_client.quote(symbol + ".BA")
+    current_stock_price = data.last_trade_price.to_f
+    setCurrentSaleValues(self.quantity, current_stock_price)
+    current_stock_price
+  end
   
   protected
     
@@ -84,11 +90,11 @@ class MyStock < ActiveRecord::Base
     self.sale_market_right_iva ||= 0.00
   end
 
-  def setCurrentSaleValues(quantity, current_price)
+  def setCurrentSaleValues(quantity, current_stock_price)
     rc = RateChart.new
     current_user = self.user
     sale_chart = rc.current(current_user, Date.today, self.type_stock, "Sale")
-    amount = (current_price * quantity)
+    amount = (current_stock_price * quantity)
     self.sale_commission = sale_chart.commission * amount / 100
     self.sale_commission_iva = sale_chart.commission_iva * self.sale_commission / 100
     self.sale_market_right = sale_chart.market_right * amount / 100

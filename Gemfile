@@ -63,4 +63,4 @@ gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) support
 gem 'devise', '3.5.4'
 
 # Yahoo-finance
-gem 'stock_quote'
+gem 'yahoo-finance'

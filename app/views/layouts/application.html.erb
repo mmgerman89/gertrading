@@ -59,14 +59,15 @@
     <div class="container">
     <% if user_signed_in? %>
       <div class="row">
-        <div class="col-lg-9">
-			<%= bootstrap_flash %>
-			
-			<h1> Bienvenido a GerTrading, <%= current_user.email %></h1>
-			
-			<%= yield %>
+        <div class="col-lg-12">
+    			<%= bootstrap_flash %>
+    			
+    			<h1> Bienvenido a GerTrading, <%= current_user.email %></h1>
+    			
+    			<%= yield %>
         </div>
-        <div class="col-lg-3">
+        <!--
+        <div class="col-lg-2">
           <div class="well sidebar-nav">
             <h3>Opciones</h3>
             <ul class="nav nav-list">
@@ -74,8 +75,9 @@
               <li><%= link_to "Editar", edit_user_registration_path  %></li>
               <li><%= link_to "Salir", destroy_user_session_path, method: :delete  %></li>
             </ul>
-          </div><!--/.well -->
-        </div><!--/span-->
+          </div><!--/.well ->
+        </div><!---/span->
+        -->
       </div><!--/row-->
 	<% else %>			
         <%= bootstrap_flash %>
