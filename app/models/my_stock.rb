@@ -95,10 +95,12 @@ class MyStock < ActiveRecord::Base
     current_user = self.user
     sale_chart = rc.current(current_user, Date.today, self.type_stock, "Sale")
     amount = (current_stock_price * quantity)
-    self.sale_commission = sale_chart.commission * amount / 100
-    self.sale_commission_iva = sale_chart.commission_iva * self.sale_commission / 100
-    self.sale_market_right = sale_chart.market_right * amount / 100
-    self.sale_market_right_iva = sale_chart.market_right_iva * self.sale_market_right / 100
+    if sale_chart
+      self.sale_commission = sale_chart.commission * amount / 100
+      self.sale_commission_iva = sale_chart.commission_iva * self.sale_commission / 100
+      self.sale_market_right = sale_chart.market_right * amount / 100
+      self.sale_market_right_iva = sale_chart.market_right_iva * self.sale_market_right / 100
+    end
   end
 
 end
