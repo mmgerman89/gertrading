@@ -25,7 +25,7 @@
 					<td><%= number_to_currency(my_stock.purchase_price) %></td>
 					<td><%= number_to_currency(my_stock.total_purchase) %></td>
 					<td><%= my_stock.sale_date %></td>
-					<td><%= number_to_currency((my_stock.sale_price = 0) ? my_stock.current_price : my_stock.sale_price) %></td>
+					<td><%= number_to_currency((my_stock.sale_price > 0) ? my_stock.sale_price : my_stock.current_price) %></td>
 					<td><%= number_to_currency(my_stock.total_sale) %></td>
 					<td style="color: <%= (my_stock.result >= 0)? "green" : "red" %>"><%= number_to_currency(my_stock.result) %></td>
 					<td style="color: <%= (my_stock.result >= 0)? "green" : "red" %>"><%= my_stock.var %></td>

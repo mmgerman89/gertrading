@@ -39,10 +39,10 @@ class MyStock < ActiveRecord::Base
   end
   
   def total_sale
-    if sale_price == 0 and symbol
-      sale_stock_price = self.current_price
-    else
+    if self.sale_price > 0 #and symbol
       sale_stock_price = sale_price
+    else
+      sale_stock_price = self.current_price
     end
     total_sale = (sale_stock_price * self.quantity) - (self.sale_commission + self.sale_commission_iva + self.sale_market_right + self.sale_market_right_iva)
   end
