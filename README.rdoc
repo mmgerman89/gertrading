@@ -1,28 +1,16 @@
-== README
+== GerTrading
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Sistema para el monitoreo de acciones y bonos. 
 
-Things you may want to cover:
+* Permite la carga de cuadros tarifarios personalizados por fechas para mantener un histórico de las comisiones pagadas.
+* Muestra los resultados con las comisiones incluidas, lo que permite saber el beneficio real de vender un activo en determinado momento.
+* El precio de venta mostrado en los activos que no fueron vendidos aún es el del último cierre.
 
-* Ruby version
+El sistema está en desarrollo.
 
-* System dependencies
+Puede probar la demo en: http://gertrading.herokuapp.com/
 
-* Configuration
+Por cualquier sugerencia puede escribir a mailto:contacto@gmartinez.net
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+---
+Germán Martínez
