@@ -64,3 +64,6 @@ gem 'devise', '3.5.4'
 
 # Yahoo-finance
 gem 'yahoo-finance'
+
+# Annotate
+gem 'annotate'
