@@ -96,11 +96,15 @@ class MyStock < ActiveRecord::Base
   end
 
   def current_price
-    yahoo_client = YahooFinance::Client.new
-    data = yahoo_client.quote(symbol + ".BA")
-    current_stock_price = data.last_trade_price.to_f
-    setCurrentSaleValues(self.quantity, current_stock_price)
-    current_stock_price
+    if symbol
+      yahoo_client = YahooFinance::Client.new
+      data = yahoo_client.quote(symbol + ".BA")
+      current_stock_price = data.last_trade_price.to_f
+      setCurrentSaleValues(self.quantity, current_stock_price)
+      current_stock_price
+    else
+      0
+    end
   end
   
   protected
