@@ -53,7 +53,7 @@
             <li><%= link_to "Cotizaciones", stocks_path  %></li>
             <li><%= link_to "Cuadros Tarifarios", rate_charts_path  %></li>
             <li><%= link_to "Cuenta", edit_user_registration_path  %></li>
-            <li><%= link_to "Actualizar BD", update_stock_list_path  %></li>
+            <li><%= link_to "Actualizar BD", update_stock_list_path if current_user.email == "ned@stark.com" %></li>
             <li><%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %></li>
           <% end %>
           </ul>

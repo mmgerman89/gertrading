@@ -1,9 +1,5 @@
 <h3>Activo: <%= @stock.symbol %> </h3>
 
-<%	data = StockQuote::Stock.quote(@stock.symbol+".BA") %>
-<%=
-	data.symbol + " " + data.last_trade_price_only.to_s
-	# data = yahoo_client.historical("APPL", {start_date: Time::now - (24*60*60*10), end_date: Time::now})
-%>
+<p>No implementado aún </p>
 
 <%= link_to 'Volver', root_path %>
