@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160306223209) do
+ActiveRecord::Schema.define(version: 20160626205856) do
 
   create_table "my_stocks", force: :cascade do |t|
     t.string   "symbol"
@@ -47,6 +47,21 @@ ActiveRecord::Schema.define(version: 20160306223209) do
     t.integer  "type_stock"
     t.decimal  "commission_min",   precision: 12, scale: 2
   end
+
+  create_table "stocks", force: :cascade do |t|
+    t.string   "symbol"
+    t.date     "date"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.decimal  "open_price",  precision: 12, scale: 2
+    t.decimal  "close_price", precision: 12, scale: 2
+    t.decimal  "day_low",     precision: 12, scale: 2
+    t.decimal  "day_high",    precision: 12, scale: 2
+    t.decimal  "day_price",   precision: 12, scale: 2
+    t.decimal  "volume",      precision: 12, scale: 2
+  end
+
+  add_index "stocks", ["symbol", "date"], name: "index_stocks_on_symbol_and_date"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

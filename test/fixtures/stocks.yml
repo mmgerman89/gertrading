@@ -1,0 +1,34 @@
+# == Schema Information
+#
+# Table name: stocks
+#
+#  id          :integer          not null, primary key
+#  symbol      :string
+#  date        :date
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  open_price  :decimal(12, 2)
+#  close_price :decimal(12, 2)
+#  day_low     :decimal(12, 2)
+#  day_high    :decimal(12, 2)
+#  day_price   :decimal(12, 2)
+#  volume      :decimal(12, 2)
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  symbol: MyString
+  price: 9.99
+  date: 2016-06-26
+  low_day: 9.99
+  high_day: 9.99
+  volume: 9.99
+
+two:
+  symbol: MyString
+  price: 9.99
+  date: 2016-06-26
+  low_day: 9.99
+  high_day: 9.99
+  volume: 9.99

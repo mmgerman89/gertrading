@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :stocks
+
   root 'home#index'
   
   devise_for :users
@@ -9,6 +11,8 @@ Rails.application.routes.draw do
   resources :my_stocks
   resources :rate_charts
   get 'rate_charts_current' => 'rate_charts#current'
+
+  get 'update_stock_list' => 'stocks#update_stock_list'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

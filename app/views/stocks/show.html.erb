@@ -1,0 +1,27 @@
+<h1>Últimas <%= @data_stock.count %> cotizaciones de <%= @data_stock.first.symbol %></h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Precio</th>
+      <th>Volumen</th>
+      <th>Mínimo diario</th>
+      <th>Máximo diario</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @data_stock.each do |stock| %>
+      <tr>
+        <td><%= stock.date %></td>
+        <td><%= number_to_currency stock.close_price %></td>
+        <td><%= stock.volume.round %></td>
+        <td><%= number_to_currency stock.day_low %></td>
+        <td><%= number_to_currency stock.day_high %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Volver", stocks_path %>

@@ -48,9 +48,14 @@
         <a class="navbar-brand" href="<%= root_path %>">Trading</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
+          <% if user_signed_in? %>
             <li><%= link_to "Inicio", root_path  %></li>
-            <li><%= link_to "Cuenta", edit_user_registration_path  %></li>
+            <li><%= link_to "Cotizaciones", stocks_path  %></li>
             <li><%= link_to "Cuadros Tarifarios", rate_charts_path  %></li>
+            <li><%= link_to "Cuenta", edit_user_registration_path  %></li>
+            <li><%= link_to "Actualizar BD", update_stock_list_path  %></li>
+            <li><%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %></li>
+          <% end %>
           </ul>
         </div>
       </div>
@@ -79,15 +84,15 @@
         </div><!---/span->
         -->
       </div><!--/row-->
-	<% else %>			
-        <%= bootstrap_flash %>
-        <%= yield %>
-	<% end %>
-      <footer>
-        <p>&copy; Germán Martínez 2016</p>
-      </footer>
-
+  	<% else %>
+      <h1> Bienvenido a GerTrading.</h1>
+      <p>Sistema de monitoreo de Acciones y Bonos. Antes de continuar, debe registrarse.</p>
+      <!--<%= bootstrap_flash %> -->
+      <%= yield %>
+  	<% end %>
+        <footer>
+          <p>&copy; Germán Martínez 2016</p>
+        </footer>
     </div> <!-- /container -->
-
   </body>
 </html>

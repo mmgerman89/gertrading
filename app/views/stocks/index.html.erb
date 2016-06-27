@@ -1,0 +1,31 @@
+<h1>Cotizaciones</h1>
+<div class="panel panel-dafault">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Símbolo</th>
+        <th>Fecha</th>
+        <th>Precio</th>
+        <th>Volumen</th>
+        <th>Mínimo diario</th>
+        <th>Máximo diario</th>
+        <th colspan="1"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @stocks.each do |stock| %>
+        <tr>
+          <td><%= link_to stock.symbol, stock %></td>
+          <td><%= stock.date %></td>
+          <td><%= number_to_currency(stock.close_price) %></td>
+          <td><%= stock.volume.round %></td>
+          <td><%= number_to_currency(stock.day_low) %></td>
+          <td><%= number_to_currency(stock.day_high) %></td>
+          <td><%= link_to 'Show', stock %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
