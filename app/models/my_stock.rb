@@ -129,6 +129,9 @@ class MyStock < ActiveRecord::Base
     amount = (current_stock_price * quantity)
     if sale_chart
       self.sale_commission = sale_chart.commission * amount / 100
+      if self.sale_commission < sale_chart.commission_min
+        self.sale_commission = sale_chart.commission_min
+      end
       self.sale_commission_iva = sale_chart.commission_iva * self.sale_commission / 100
       self.sale_market_right = sale_chart.market_right * amount / 100
       self.sale_market_right_iva = sale_chart.market_right_iva * self.sale_market_right / 100
