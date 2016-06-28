@@ -77,6 +77,8 @@ class StocksController < ApplicationController
       the_stock = Stock.where(symbol: stock).order("date DESC").first
       if the_stock
         since_date = the_stock.date
+      else
+        since_date = DateTime.parse("2016-06-01")
       end
 
       data = yahoo_client.historical_quotes(stock, { start_date: since_date, end_date: Time::now })
