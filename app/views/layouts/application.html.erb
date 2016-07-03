@@ -31,6 +31,12 @@
 
     <%= javascript_include_tag "application", "#{controller_name}" %>
 
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/> -->
+    <%= stylesheet_link_tag "font-awesome" %>
+
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js" type="text/javascript"></script>
@@ -38,6 +44,99 @@
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
 
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <%= link_to "GerTrading", root_path, class: "navbar-brand"  %>
+            </div>
+            <!-- /.navbar-header -->
+            <% if user_signed_in? %>
+              <ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-line-chart fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <li>
+                            <a href="<%= root_path %>">
+                                <div>
+                                    <strong>Mis Activos</strong>
+                                    <span class="pull-right text-muted">
+                                        <em>Resultados</em>
+                                    </span>
+                                </div>
+                                <div>Ver el resultado de sus activos</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<%= stocks_path %>">
+                                <div>
+                                    <strong>Cotizaciones</strong>
+                                    <span class="pull-right text-muted">
+                                        <em>Al cierre anterior</em>
+                                    </span>
+                                </div>
+                                <div>Ver últimas cotizaciones de acciones y bonos</div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="<%= rate_charts_path %>">
+                                <div>
+                                    <strong>Cuadros Tarifarios</strong>
+                                    <span class="pull-right text-muted">
+                                        <em>Propios</em>
+                                    </span>
+                                </div>
+                                <div>Configure los cuadros tarifarios según su operador de bolsa</div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- /.dropdown-acciones -->
+
+                <% if current_user.email == "ger@man.com" %>
+                  <!-- /.dropdown -->
+                  <li class="dropdown">
+                      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                          <i class="fa fa-tasks fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                      </a>
+                      <ul class="dropdown-menu dropdown-user">
+                          <!-- <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a></li> -->
+                          <li><a href="<%= update_stock_list_path %>"><i class="fa fa-gear fa-fw"></i> Actualizar BD</a></li>
+                      </ul>
+                  </li>
+                  <!-- /.dropdown-tasks -->
+                <% end %>
+
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <!-- <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a></li> -->
+                        <li><a href="<%= edit_user_registration_path %>"><i class="fa fa-gear fa-fw"></i> Cuenta</a></li>
+                        <li class="divider"></li>
+                        <li><a href="<%= destroy_user_session_path %>" data-method="delete"><i class="fa fa-sign-out fa-fw""></i> Cerrar sesión</a></li>
+                    </ul>
+                </li>
+                <!-- /.dropdown-user -->
+              </ul>
+              <!-- /.navbar-header -->
+            <% end %>
+        </nav>
+    </div>
+<!--
     <div class="navbar navbar-default navbar-static-top">
       <div class="container">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
@@ -48,19 +147,11 @@
         <a class="navbar-brand" href="<%= root_path %>">Trading</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-          <% if user_signed_in? %>
-            <li><%= link_to "Inicio", root_path  %></li>
-            <li><%= link_to "Cotizaciones", stocks_path  %></li>
-            <li><%= link_to "Cuadros Tarifarios", rate_charts_path  %></li>
-            <li><%= link_to "Cuenta", edit_user_registration_path  %></li>
-            <li><%= link_to "Actualizar BD", update_stock_list_path if current_user.email == "ned@stark.com" %></li>
-            <li><%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %></li>
-          <% end %>
           </ul>
         </div>
       </div>
     </div>
-
+-->
     <div class="container">
     <% if user_signed_in? %>
       <div class="row">
