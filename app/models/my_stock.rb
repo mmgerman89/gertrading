@@ -91,7 +91,7 @@ class MyStock < ActiveRecord::Base
     if self.sale_price > 0
       self.sale_price
     else
-      current_price
+      self.current_price
     end
   end
 

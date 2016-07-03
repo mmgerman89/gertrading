@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get 'rate_charts_current' => 'rate_charts#current'
 
   get 'update_stock_list' => 'stocks#update_stock_list'
+
+  get 'current_assets' => 'my_stocks#current_assets'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

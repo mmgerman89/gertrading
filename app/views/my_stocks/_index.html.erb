@@ -37,3 +37,31 @@
 		</tbody>
 	</table>
 </div>
+<div align="center">
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Gráfico de Tenencias
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="flot-chart">
+                    <div class="flot-chart-content" id="flot-pie-chart"></div>
+                </div>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-6 -->
+</div>
+<!-- /.row -->
+</div>
+<%= javascript_include_tag "flot/jquery.min.js" %>
+<%= javascript_include_tag "flot/excanvas.min.js" %>
+<%= javascript_include_tag "flot/jquery.flot.js" %>
+<%= javascript_include_tag "flot/jquery.flot.pie.js" %>
+<%= javascript_include_tag "flot/flot-data.js" %>
+<%= javascript_include_tag "flot/jquery.flot.tooltip.min.js" %>

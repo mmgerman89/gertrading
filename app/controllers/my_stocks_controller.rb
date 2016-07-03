@@ -33,6 +33,43 @@ class MyStocksController < ApplicationController
       render :new
     end
   end
+
+  def current_assets
+    my_stocks = current_user.my_stocks
+
+    total = 0
+    my_stocks.each do |stock|
+      if stock.sale_date == nil
+        total = stock.total_sale
+      end
+    end
+
+    if total = 0
+      total = 1
+    end
+
+    symbols = []
+    prices = []
+    my_stocks.each do |stock|
+      if stock.sale_date == nil
+        symbols << [stock.symbol, stock.total_sale / total]
+      end
+    end
+
+    if symbols.size == 0
+      symbols << ["Ninguno", 1]
+    end
+
+    result = symbols.map do |sym, price|
+      { label: sym, data: price }
+    end
+
+    result = result.to_json
+
+    respond_to do |format|
+      format.json { render json: result}
+    end
+  end
   
   protected
   
