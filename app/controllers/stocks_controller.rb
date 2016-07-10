@@ -69,7 +69,12 @@ class StocksController < ApplicationController
   end
 
   def update_stock_list
-    @stock_list = ["YPFD.BA", "GGAL.BA", "PAMP.BA", "SAMI.BA", "EDN.BA", "ALUA.BA", "TS.BA"]
+    saved_stocks = ListStock.all
+    @stock_list = []
+    saved_stocks.each do |ss|
+      @stock_list << ss.complete_name
+    end
+    #["YPFD.BA", "GGAL.BA", "PAMP.BA", "SAMI.BA", "EDN.BA", "ALUA.BA", "TS.BA"]
 
     yahoo_client = YahooFinance::Client.new
     

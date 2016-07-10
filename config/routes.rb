@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  get 'list_stock/index'
+
+  get 'list_stock/new'
+
+  get 'list_stock/create'
+
+  get 'list_stock/edite'
+
+  get 'list_stock/delete'
+
   resources :stocks
 
   root 'home#index'
@@ -10,11 +20,16 @@ Rails.application.routes.draw do
 
   resources :my_stocks
   resources :rate_charts
+
   get 'rate_charts_current' => 'rate_charts#current'
 
   get 'update_stock_list' => 'stocks#update_stock_list'
 
   get 'current_assets' => 'my_stocks#current_assets'
+
+
+  resources :list_stocks
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

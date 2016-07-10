@@ -9,7 +9,6 @@
         <th>Volumen</th>
         <th>Mínimo diario</th>
         <th>Máximo diario</th>
-        <th colspan="1"></th>
       </tr>
     </thead>
 
@@ -22,7 +21,6 @@
           <td><%= stock.volume.round %></td>
           <td><%= number_to_currency(stock.day_low) %></td>
           <td><%= number_to_currency(stock.day_high) %></td>
-          <td><%= link_to 'Show', stock %></td>
         </tr>
       <% end %>
     </tbody>
