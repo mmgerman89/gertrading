@@ -214,7 +214,7 @@ ready = function ready() {
 				parseFloat($("#my_stock_sale_market_right").val()) + parseFloat($("#my_stock_sale_market_right_iva").val());
 		taxes = Math.round(taxes * 100) / 100;
 		
-		total = subtotal + taxes;
+		total = subtotal - taxes;
 		total = Math.round(total * 100) / 100;
 		
 		$("#my_stock_subtotal_sale").val(subtotal);
