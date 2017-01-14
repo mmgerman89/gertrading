@@ -7,6 +7,7 @@ class MyStocksController < ApplicationController
   
   def index
     @my_stocks = current_user.my_stocks
+    @my_stocks = @my_stocks.sort_by { |a, b| a.symbol > b.symbol }
   end
   
   def update

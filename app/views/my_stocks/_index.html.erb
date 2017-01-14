@@ -17,24 +17,40 @@
 			<th>Anual</th>
 		</thead>
 		<tbody>
+			<% total_result = 0 %>
 			<% @my_stocks.each do |my_stock| %>
-				<tr>
+				<tr <%= my_stock.sale_date.nil? ? "" : "class=sold-stock" %> >
 					<th><%= link_to my_stock.symbol, my_stock_path(my_stock) %></th>
-					<td><%= my_stock.quantity %></td>
+					<td class="result-column"><%= my_stock.quantity %></td>
 					<td><%= my_stock.purchase_date %></td>
-					<td><%= number_to_currency(my_stock.purchase_price) %></td>
-					<td><%= number_to_currency(my_stock.total_purchase) %></td>
+					<td class="result-column"><%= number_to_currency(my_stock.purchase_price) %></td>
+					<td class="result-column"><%= number_to_currency(my_stock.total_purchase) %></td>
 					<td><%= my_stock.sale_date %></td>
-					<td><%= number_to_currency(my_stock.showed_sale_price) %></td>
-					<td><%= number_to_currency(my_stock.total_sale) %></td>
-					<td style="color: <%= (my_stock.result >= 0)? "green" : "red" %>"><%= number_to_currency(my_stock.result) %></td>
-					<td style="color: <%= (my_stock.result >= 0)? "green" : "red" %>"><%= my_stock.variation %></td>
-					<td><%= my_stock.days %></td>
-					<td style="color: <%= (my_stock.result >= 0)? "green" : "red" %>"><%= my_stock.variation_anual %></td>
+					<td class="result-column"><%= number_to_currency(my_stock.showed_sale_price) %></td>
+					<td class="result-column"><%= number_to_currency(my_stock.total_sale) %></td>
+					<td class="result-column" style="color: <%= (my_stock.result >= 0)? "green" : "red" %>"><%= number_to_currency(my_stock.result) %></td>
+					<td class="result-column" style="color: <%= (my_stock.result >= 0)? "green" : "red" %>"><%= my_stock.variation %></td>
+					<td class="result-column"><%= my_stock.days %></td>
+					<td class="result-column" style="color: <%= (my_stock.result >= 0)? "green" : "red" %>"><%= my_stock.variation_anual %></td>
 					<td align="right"><%= link_to 'Editar', edit_my_stock_path(my_stock) %></td>
 				</tr>
+				<% total_result += my_stock.result %>
 			<% end %>
 		</tbody>
+		<tfoot>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td class="result-column" style="color: <%= (total_result >= 0)? "green" : "red" %>"><%= number_to_currency(total_result) %></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tfoot>
 	</table>
 </div>
 <div align="center">

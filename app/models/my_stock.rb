@@ -106,6 +106,10 @@ class MyStock < ActiveRecord::Base
       0
     end
   end
+
+  def sold
+    (self.sale_date.nil?) ? 1 : 2
+  end
   
   protected
     
