@@ -18,6 +18,7 @@
 		</thead>
 		<tbody>
 			<% total_result = 0 %>
+			<% total_current_result = 0 %>
 			<% @my_stocks.each do |my_stock| %>
 				<tr <%= my_stock.sale_date.nil? ? "" : "class=sold-stock" %> >
 					<th><%= link_to my_stock.symbol, my_stock_path(my_stock) %></th>
@@ -35,21 +36,20 @@
 					<td align="right"><%= link_to 'Editar', edit_my_stock_path(my_stock) %></td>
 				</tr>
 				<% total_result += my_stock.result %>
+				<% total_current_result += (my_stock.sale_date.nil?) ?  0 : my_stock.result %>
 			<% end %>
 		</tbody>
 		<tfoot>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
+			<td colspan="7"></td>
+			<th>Total histórico</th>
 			<td class="result-column" style="color: <%= (total_result >= 0)? "green" : "red" %>"><%= number_to_currency(total_result) %></td>
-			<td></td>
-			<td></td>
-			<td></td>
+			<td colspan="3"></td>
+		</tfoot>
+		<tfoot>
+			<td colspan="7"></td>
+			<th>Activos actuales</th>
+			<td class="result-column" style="color: <%= (total_result >= 0)? "green" : "red" %>"><%= number_to_currency(total_current_result) %></td>
+			<td colspan="3"></td>
 		</tfoot>
 	</table>
 </div>
