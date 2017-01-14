@@ -36,20 +36,22 @@
 					<td align="right"><%= link_to 'Editar', edit_my_stock_path(my_stock) %></td>
 				</tr>
 				<% total_result += my_stock.result %>
-				<% total_current_result += (my_stock.sale_date.nil?) ?  0 : my_stock.result %>
+				<% total_current_result += (my_stock.sale_date.nil?) ?  my_stock.result : 0 %>
 			<% end %>
 		</tbody>
 		<tfoot>
-			<td colspan="7"></td>
-			<th>Total histórico</th>
-			<td class="result-column" style="color: <%= (total_result >= 0)? "green" : "red" %>"><%= number_to_currency(total_result) %></td>
-			<td colspan="3"></td>
-		</tfoot>
-		<tfoot>
-			<td colspan="7"></td>
-			<th>Activos actuales</th>
-			<td class="result-column" style="color: <%= (total_result >= 0)? "green" : "red" %>"><%= number_to_currency(total_current_result) %></td>
-			<td colspan="3"></td>
+			<tr>
+				<td colspan="6"></td>
+				<th colspan="2" class="result-column">Activos actuales</th>
+				<th class="result-column" style="color: <%= (total_current_result >= 0)? "green" : "red" %>"><%= number_to_currency(total_current_result) %></th>
+				<td colspan="3"></td>
+			</tr>
+			<tr>
+				<td colspan="6"></td>
+				<th colspan="2" class="result-column">Total histórico</th>
+				<th class="result-column" style="color: <%= (total_result >= 0)? "green" : "red" %>"><%= number_to_currency(total_result) %></th>
+				<td colspan="3"></td>
+			</tr>
 		</tfoot>
 	</table>
 </div>
